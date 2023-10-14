@@ -1,0 +1,18 @@
+$From = "sender@example.com"
+$To = "recipient@example.com"
+$Subject = "This is the subject of the email"
+$Body = "BODY MESSAGE"
+
+# Define the SMTP server details
+$SMTPServer = "localhost"
+$SMTPPort = 25000
+
+# Create the email object
+$Email = New-Object System.Net.Mail.MailMessage($From, $To, $Subject, $Body)
+#$Email.Attachments.Add("C:\Users\ЪуЪ\attach.png")
+
+# Set the SMTP client details and send the email
+$SMTPClient = New-Object System.Net.Mail.SmtpClient($SMTPServer, $SMTPPort)
+$SMTPClient.EnableSsl = $false
+$SMTPClient.Credentials = New-Object System.Net.NetworkCredential($SMTPUsername, $SMTPPassword)
+$SMTPClient.Send($Email)
